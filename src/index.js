@@ -1,13 +1,26 @@
 const { fastify } = require('fastify');
 const server = fastify();
+const users = [
+	{ id: 1, name: 'Victor Badaró' },
+	{ id: 2, name: 'Miryam Santana' },
+	{ id: 3, name: 'Lívia Badaró' },
+	{ id: 4, name: 'Ana Laura Badaró' }
+]
 
 server.get('/users', () => {
-	return [
-		{ id: 1, name: 'Victor Badaró' },
-		{ id: 2, name: 'Miryam Santana' },
-		{ id: 3, name: 'Lívia Badaró' },
-		{ id: 4, name: 'Ana Laura Badaró' }
-	]
+	return users;
+});
+
+server.post('/users', (request, reply) => {
+	const { name } = request.body;
+	const newUser = {
+		id: Math.floor(Math.random() * 200) + 5,
+		name
+	};
+
+	users.push(newUser);
+
+	return newUser
 });
 
 server.listen({
