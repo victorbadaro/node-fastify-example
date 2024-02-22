@@ -23,6 +23,13 @@ server.post('/users', (request, reply) => {
 	return newUser
 });
 
+server.get('/users/:id', (request, reply) => {
+	const { id } = request.params;
+	const user = users.find(user => user.id === Number(id));
+
+	return user;
+});
+
 server.listen({
 	port: 3333
 });
