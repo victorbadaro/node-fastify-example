@@ -26,7 +26,7 @@ const users: User[] = [
 
 server.get('/users', () => users);
 
-server.post<ICreateUser>('/users', (request, reply) => {
+server.post<ICreateUser>('/users', (request) => {
 	const { name } = request.body;
 	const newUser: User = {
 		id: Math.floor(Math.random() * 200) + 5,
@@ -37,7 +37,7 @@ server.post<ICreateUser>('/users', (request, reply) => {
 	return newUser;
 });
 
-server.get<IGetUser>('/users/:id', (request, reply) => {
+server.get<IGetUser>('/users/:id', (request) => {
 	const { id } = request.params;
 	const user = users.find(user => user.id === id);
 
