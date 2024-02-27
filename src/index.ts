@@ -1,4 +1,5 @@
 import { fastify } from 'fastify';
+import { env } from '../env';
 
 interface User {
 	id: number;
@@ -16,7 +17,7 @@ interface IGetUser {
 }
 
 const server = fastify();
-const SERVER_PORT = Number(process.env.SERVER_PORT);
+const SERVER_PORT = Number(env.SERVER_PORT);
 const users: User[] = [
 	{ id: 1, name: 'Victor Badaró' },
 	{ id: 2, name: 'Miryam Santana' },
